@@ -8,9 +8,12 @@
   },
   "bugs": "https://github.com/navidmitchell/monkey-cli/issues",
   "dependencies": {
+    "@inquirer/prompts": "^7.4.1",
     "@oclif/core": "^4",
     "@oclif/plugin-help": "^6",
-    "@oclif/plugin-plugins": "^5"
+    "@oclif/plugin-plugins": "^5",
+    "axios": "^1.8.4",
+    "chalk": "^5.4.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1",
@@ -18,7 +21,7 @@
     "@oclif/test": "^4",
     "@types/chai": "^4",
     "@types/mocha": "^10",
-    "@types/node": "^18",
+    "@types/node": "^22",
     "chai": "^4",
     "eslint": "^9",
     "eslint-config-oclif": "^6",

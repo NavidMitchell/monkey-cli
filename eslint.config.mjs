@@ -1,9 +1,16 @@
-import {includeIgnoreFile} from '@eslint/compat'
-import oclif from 'eslint-config-oclif'
-import prettier from 'eslint-config-prettier'
-import path from 'node:path'
-import {fileURLToPath} from 'node:url'
+import perfectionist from 'eslint-plugin-perfectionist'
+import unicorn from 'eslint-plugin-unicorn'
 
-const gitignorePath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.gitignore')
-
-export default [includeIgnoreFile(gitignorePath), ...oclif, prettier]
+export default [
+  {
+    plugins: {
+      perfectionist,
+      unicorn
+    },
+    rules: {
+      'perfectionist/sort-imports': 'off',
+      'perfectionist/sort-named-imports': 'off',
+      'unicorn/filename-case': 'off'
+    }
+  }
+]
