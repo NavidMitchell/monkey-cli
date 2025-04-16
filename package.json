@@ -1,7 +1,7 @@
 {
   "name": "@navidmitchell/monkey-cli",
   "description": "CLI to work with the Shop Monkey API",
-  "version": "0.0.0",
+  "version": "0.1.3",
   "author": "Navid Mitchell",
   "bin": {
     "monkey": "./bin/run.js"

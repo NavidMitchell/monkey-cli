@@ -1,21 +1,21 @@
-import { Command, Flags } from '@oclif/core'
+import { Command, Args } from '@oclif/core'
 import chalk from 'chalk'
 import { ConfigMonkey, loadMonkeyConfig } from '../internal/state/ConfigMonkey.js'
 import { CustomerService } from '../internal/services/CustomerService.js'
 
 export default class SearchCustomers extends Command {
-    static description = 'Searches for customers by company name'
+    static description = 'Searches for customers by first name'
 
     static examples = [
-        'monkey search-customers --search "Company Name"'
+        'monkey search-customers "John"'
     ]
 
-    static flags = {
-        search: Flags.string({ char: 's', description: 'Company name to search', required: true })
+    static args = {
+        search: Args.string({ description: 'First name to search', required: true })
     }
 
     public async run(): Promise<void> {
-        const { flags } = await this.parse(SearchCustomers)
+        const { args } = await this.parse(SearchCustomers)
         const config = await loadMonkeyConfig(this.config.configDir)
 
         if (!config.apiKey) {
@@ -25,11 +25,11 @@ export default class SearchCustomers extends Command {
         const customerService = new CustomerService(config.apiKey)
 
         const customers = await customerService.searchCustomers({
-            where: { companyName: flags.search }
+            where: { firstName: args.search }
         })
 
         if (!customers.length) {
-            this.log(chalk.yellow('No customers found for the provided company name.'))
+            this.log(chalk.yellow('No customers found for the provided first name.'))
             return
         }
 
